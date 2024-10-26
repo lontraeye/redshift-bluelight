@@ -1,8 +1,7 @@
 #!/bin/bash
 
-ICONS=("" "" "")
+ICONS=("" "" "")
 INDEX_FILE="index.txt"
-REDSHIFT_PROCESS="redshift"
 
 if [[ ! -f $INDEX_FILE ]]; then
     echo 0 >"$INDEX_FILE"
@@ -24,13 +23,6 @@ if [[ $# -eq 0 ]]; then
     exit 1
 fi
 
-kill_redshift() {
-    if pgrep -x "$REDSHIFT_PROCESS" >/dev/null; then
-        echo "Matando o processo $REDSHIFT_PROCESS..."
-        pkill -x "$REDSHIFT_PROCESS"
-    fi
-}
-
 case $1 in
 mostrar)
     print_icon
@@ -40,21 +32,13 @@ incrementar)
     print_icon
 
     if [[ $index -eq 0 ]]; then
-
-        kill_redshift
-
-        redshift -l 24.7335773514906:-53.71932206893908 &
+        redshift -l 24.7335773514906:-53.71932206893908 -o -P &
 
     elif [[ $index -eq 1 ]]; then
-
-        kill_redshift
-
-        redshift -O 5000 &# Altera a temperatura de cor para 3500K (filtro laranja)
+        redshift -x &
 
     elif [[ $index -eq 2 ]]; then
-        kill_redshift
-
-        redshift -x &
+        redshift -O 5000 &
     fi
     ;;
 *)
