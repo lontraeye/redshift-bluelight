@@ -39,17 +39,17 @@ Integração com Polybar
 
 Para integrar o script ao Polybar, você pode adicionar um bloco de módulo no arquivo de configuração do Polybar (~/.config/polybar/config) com um comando que chama o script:
 
-[module/redshift]
-type = custom/script
-exec = /home/lontra/.config/scripts/redshift-bluelight.sh mostrar
-interval = 0
-click-left = /home/lontra/.config/scripts/redshift-bluelight.sh incrementar
-label-font = 2
+        [module/redshift]
+        type = custom/script
+        exec = /home/lontra/.config/scripts/redshift-bluelight.sh mostrar
+        interval = 0
+        click-left = /home/lontra/.config/scripts/redshift-bluelight.sh incrementar
+        label-font = 2
 
 Voce tambem deve adicionar a fonte personalizada no escopo do polybar:
 
-font-0 = "Fonte exemplo:size=11;6"
-font-1 = "Material Symbols Rounded:style=Bold:size=11;6"
+        font-0 = "Fonte exemplo:size=11;6"
+        font-1 = "Material Symbols Rounded:style=Bold:size=11;6"
 
 altere o tamanho conforme necessario, no exemplo acima, para simular meu ambiente, utilizei duas fontes, entao para definir a fonte para o icone voce deve usar o label-font com o numero apropriado:
 
